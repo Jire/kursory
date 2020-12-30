@@ -1,17 +1,21 @@
 package org.jire.kursory
 
-interface ObjectCollection<T> {
+import org.jire.kursory.list.ObjectList
+
+interface ObjectCollection<T> : Collection {
 	
-	val size: Int
-	
-	fun isEmpty() = size <= 0
+	val values: Array<T?>
 	
 	fun add(value: T)
 	
 	fun contains(value: T?): Boolean
 	
-	fun clear()
-	
 	fun remove(value: T?): Boolean
+	
+	fun addAll(collection: ObjectList<T>) {
+		for (value in collection.values) {
+			add(value ?: continue)
+		}
+	}
 	
 }

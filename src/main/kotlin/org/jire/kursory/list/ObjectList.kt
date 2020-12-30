@@ -1,8 +1,8 @@
-package org.jire.kursory
+package org.jire.kursory.list
 
-interface ObjectList<T> : ObjectCollection<T> {
-	
-	val values: Array<T?>
+import org.jire.kursory.ObjectCollection
+
+interface ObjectList<T> : ObjectCollection<T>, List {
 	
 	operator fun get(index: Int): T? {
 		if (index < 0) return null
@@ -16,17 +16,11 @@ interface ObjectList<T> : ObjectCollection<T> {
 	
 	override fun contains(value: T?) = indexOf(value) >= 0
 	
-	fun removeAt(index: Int) = set(index, null)
+	override fun removeAt(index: Int) = set(index, null)
 	
 	override fun remove(value: T?): Boolean {
 		val index = indexOf(value)
 		return index != -1 && removeAt(index)
-	}
-	
-	fun addAll(collection: ObjectList<T>) {
-		for (value in collection.values) {
-			add(value ?: continue)
-		}
 	}
 	
 }
