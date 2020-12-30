@@ -2,6 +2,7 @@ package org.jire.kursory.list.fixed.heap
 
 import org.jire.kursory.IntCursor
 import org.jire.kursory.list.IntList
+import org.jire.kursory.list.List
 import java.util.*
 
 class FixedIntHeapList(capacity: Int) : AbstractFixedHeapList<IntCursor>(capacity), IntList {
@@ -18,7 +19,12 @@ class FixedIntHeapList(capacity: Int) : AbstractFixedHeapList<IntCursor>(capacit
 	}
 	
 	override fun indexOf(value: Int): Int {
-		TODO("Not yet implemented")
+		for (index in 0..values.lastIndex) {
+			if (value == values[index]) {
+				return index
+			}
+		}
+		return List.INVALID_INDEX
 	}
 	
 	override fun canAdd(value: Int) = nextIndex < lastIndex

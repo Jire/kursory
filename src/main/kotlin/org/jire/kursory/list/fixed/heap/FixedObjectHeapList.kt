@@ -1,6 +1,7 @@
 package org.jire.kursory.list.fixed.heap
 
 import org.jire.kursory.ObjectCursor
+import org.jire.kursory.list.List
 import org.jire.kursory.list.ObjectList
 import java.util.*
 import kotlin.reflect.KClass
@@ -23,7 +24,13 @@ class FixedObjectHeapList<T : Any>(
 	}
 	
 	override fun indexOf(value: T?): Int {
-		TODO("Not yet implemented")
+		value ?: return List.INVALID_INDEX
+		for (index in 0..values.lastIndex) {
+			if (value == values[index]) {
+				return index
+			}
+		}
+		return List.INVALID_INDEX
 	}
 	
 	override fun canAdd(value: T?) = nextIndex < lastIndex

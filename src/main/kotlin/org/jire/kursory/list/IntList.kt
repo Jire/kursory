@@ -17,7 +17,7 @@ interface IntList : IntCollection, List<IntCursor> {
 	
 	override fun remove(value: Int): Boolean {
 		val index = indexOf(value)
-		return index != -1 && removeAt(index)
+		return index != List.INVALID_INDEX && removeAt(index)
 	}
 	
 }
