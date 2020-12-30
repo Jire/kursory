@@ -19,14 +19,6 @@ abstract class AbstractOffHeapFixedList<C : OffHeapFixedListCursor>(
 	
 	override fun clear() = OS.memory().setMemory(address, addressSpace, 0)
 	
-	override fun retain(): Int {
-		TODO("Not yet implemented")
-	}
-	
-	override fun release(): Boolean {
-		TODO("Not yet implemented")
-	}
-	
 	override fun initialize() = clear()
 	
 	init {

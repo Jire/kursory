@@ -1,4 +1,6 @@
 package org.jire.kursory.list.fixed.offheap
 
-object OffHeapFixedLists {
-}
+import org.jire.kursory.OffHeapCollections
+import org.jire.kursory.list.fixed.FixedLists
+
+object OffHeapFixedLists : FixedLists, OffHeapCollections
