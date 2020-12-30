@@ -1,6 +1,6 @@
 package org.jire.kursory
 
-interface IntCollection : Collection<IntCursor> {
+interface IntCollection<C : IntCursor> : Collection<C> {
 	
 	val nil get() = cursor.nil
 	
@@ -19,12 +19,5 @@ interface IntCollection : Collection<IntCursor> {
 	fun contains(value: Int): Boolean
 	
 	fun remove(value: Int): Boolean
-	
-	fun addAll(collection: IntCollection) {
-		val cursor = collection.cursor
-		while (cursor.moveNext()) {
-			add(cursor.next)
-		}
-	}
 	
 }

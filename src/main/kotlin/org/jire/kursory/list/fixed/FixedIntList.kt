@@ -1,6 +1,6 @@
 package org.jire.kursory.list.fixed
 
-import org.jire.kursory.IntCursor
 import org.jire.kursory.list.IntList
+import org.jire.kursory.list.ListIntCursor
 
-abstract class FixedIntList(capacity: Int) : AbstractFixedList<IntCursor>(capacity), IntList
+interface FixedIntList<C : ListIntCursor> : IntList<C>

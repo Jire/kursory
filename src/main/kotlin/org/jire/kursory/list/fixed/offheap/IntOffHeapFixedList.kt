@@ -1,13 +1,13 @@
 package org.jire.kursory.list.fixed.offheap
 
 import net.openhft.chronicle.core.OS
-import org.jire.kursory.IntCursor
-import org.jire.kursory.list.IntList
 import org.jire.kursory.list.List
+import org.jire.kursory.list.fixed.FixedIntList
+import org.jire.kursory.list.fixed.FixedListIntCursor
 
 class IntOffHeapFixedList(
 	capacity: Int,
-) : AbstractOffHeapFixedList<IntCursor>(capacity, Int.SIZE_BYTES.toLong()), IntList {
+) : AbstractOffHeapFixedList<FixedListIntCursor>(capacity, Int.SIZE_BYTES.toLong()), FixedIntList<FixedListIntCursor> {
 	
 	override val cursor = IntOffHeapFixedListCursor(this)
 	

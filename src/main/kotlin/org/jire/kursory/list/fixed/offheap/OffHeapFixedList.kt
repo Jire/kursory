@@ -1,7 +1,7 @@
 package org.jire.kursory.list.fixed.offheap
 
-import org.jire.kursory.Cursor
 import org.jire.kursory.OffHeapCollection
 import org.jire.kursory.list.fixed.FixedList
+import org.jire.kursory.list.fixed.FixedListCursor
 
-interface OffHeapFixedList<C : Cursor> : FixedList<C>, OffHeapCollection<C>
+interface OffHeapFixedList<C : FixedListCursor> : FixedList<C>, OffHeapCollection<C>

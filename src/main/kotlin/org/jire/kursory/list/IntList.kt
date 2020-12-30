@@ -1,9 +1,8 @@
 package org.jire.kursory.list
 
 import org.jire.kursory.IntCollection
-import org.jire.kursory.IntCursor
 
-interface IntList : IntCollection, List<IntCursor> {
+interface IntList<C : ListIntCursor> : IntCollection<C>, List<C> {
 	
 	operator fun get(index: Int): Int
 	
@@ -18,6 +17,13 @@ interface IntList : IntCollection, List<IntCursor> {
 	override fun remove(value: Int): Boolean {
 		val index = indexOf(value)
 		return index != List.INVALID_INDEX && removeAt(index)
+	}
+	
+	fun addAll(list: IntList<out C>) {
+		val cursor = list.cursor
+		while (cursor.moveNext()) {
+			add(cursor.next)
+		}
 	}
 	
 }

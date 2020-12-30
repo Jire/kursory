@@ -1,10 +1,10 @@
 package org.jire.kursory.list.fixed.offheap
 
 import net.openhft.chronicle.core.OS
-import org.jire.kursory.Cursor
 import org.jire.kursory.list.fixed.AbstractFixedList
+import org.jire.kursory.list.fixed.FixedListCursor
 
-abstract class AbstractOffHeapFixedList<C : Cursor>(
+abstract class AbstractOffHeapFixedList<C : FixedListCursor>(
 	capacity: Int,
 	val valueSize: Long
 ) : AbstractFixedList<C>(capacity), OffHeapFixedList<C> {

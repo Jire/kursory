@@ -1,11 +1,12 @@
 package org.jire.kursory.list.fixed.heap
 
-import org.jire.kursory.IntCursor
-import org.jire.kursory.list.IntList
 import org.jire.kursory.list.List
+import org.jire.kursory.list.fixed.FixedIntList
+import org.jire.kursory.list.fixed.FixedListIntCursor
 import java.util.*
 
-class IntHeapFixedList(capacity: Int) : AbstractHeapFixedList<IntCursor>(capacity), IntList {
+class IntHeapFixedList(capacity: Int) : AbstractHeapFixedList<FixedListIntCursor>(capacity),
+	FixedIntList<FixedListIntCursor> {
 	
 	val values = IntArray(capacity)
 	

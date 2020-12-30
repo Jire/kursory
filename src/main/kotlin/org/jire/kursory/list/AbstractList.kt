@@ -1,8 +1,7 @@
 package org.jire.kursory.list
 
 import org.jire.kursory.AbstractCollection
-import org.jire.kursory.Cursor
 
-abstract class AbstractList<C : Cursor>(
+abstract class AbstractList<C : ListCursor>(
 ) : AbstractCollection<C>(),
 	List<C>

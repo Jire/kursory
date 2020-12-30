@@ -1,8 +1,6 @@
 package org.jire.kursory
 
-import org.jire.kursory.list.ObjectList
-
-interface ObjectCollection<T> : Collection<ObjectCursor<T>> {
+interface ObjectCollection<T, C : ObjectCursor<T>> : Collection<C> {
 	
 	fun add(value: T): Boolean {
 		if (canAdd(value)) {
@@ -19,12 +17,5 @@ interface ObjectCollection<T> : Collection<ObjectCursor<T>> {
 	fun contains(value: T?): Boolean
 	
 	fun remove(value: T?): Boolean
-	
-	fun addAll(collection: ObjectList<T>) {
-		val cursor = collection.cursor
-		while (cursor.moveNext()) {
-			addUnsafe(cursor.next)
-		}
-	}
 	
 }

@@ -1,9 +1,8 @@
 package org.jire.kursory.list
 
 import org.jire.kursory.ObjectCollection
-import org.jire.kursory.ObjectCursor
 
-interface ObjectList<T> : ObjectCollection<T>, List<ObjectCursor<T>> {
+interface ObjectList<T, C : ListObjectCursor<T>> : ObjectCollection<T, C>, List<C> {
 	
 	operator fun get(index: Int): T?
 	
@@ -18,6 +17,13 @@ interface ObjectList<T> : ObjectCollection<T>, List<ObjectCursor<T>> {
 	override fun remove(value: T?): Boolean {
 		val index = indexOf(value)
 		return index != -1 && removeAt(index)
+	}
+	
+	fun addAll(collection: ObjectList<out T, out C>) {
+		val cursor = collection.cursor
+		while (cursor.moveNext()) {
+			addUnsafe(cursor.next)
+		}
 	}
 	
 }

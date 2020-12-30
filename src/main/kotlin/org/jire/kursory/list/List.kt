@@ -1,9 +1,8 @@
 package org.jire.kursory.list
 
 import org.jire.kursory.Collection
-import org.jire.kursory.Cursor
 
-interface List<C : Cursor> : Collection<C> {
+interface List<C : ListCursor> : Collection<C> {
 	
 	companion object {
 		const val INVALID_INDEX = -1

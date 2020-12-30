@@ -8,6 +8,4 @@ interface IntCursor : Cursor {
 	
 	val nil get() = NIL
 	
-	val next: Int
-	
 }
