@@ -1,8 +1,6 @@
 package org.jire.kursory.list.fixed.offheap
 
-import org.jire.kursory.list.fixed.FixedListCursor
-
-abstract class AbstractThreadSafeOffHeapFixedList<C : FixedListCursor>(
+abstract class AbstractThreadSafeOffHeapFixedList<C : OffHeapFixedListCursor>(
 	capacity: Int,
 	valueSize: Long
 ) : AbstractOffHeapFixedList<C>(capacity, valueSize) {

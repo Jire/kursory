@@ -1,16 +1,15 @@
 package org.jire.kursory.list.fixed.heap
 
 import org.jire.kursory.list.List
-import org.jire.kursory.list.ObjectList
-import org.jire.kursory.list.fixed.FixedListObjectCursor
+import org.jire.kursory.list.fixed.FixedObjectList
 import java.util.*
 import kotlin.reflect.KClass
 
 class ObjectHeapFixedList<T : Any>(
 	capacity: Int,
 	val type: KClass<T>
-) : AbstractHeapFixedList<FixedListObjectCursor<T>>(capacity),
-	ObjectList<T, FixedListObjectCursor<T>> {
+) : AbstractHeapFixedList<ObjectHeapFixedListCursor<T>>(capacity),
+	FixedObjectList<T, ObjectHeapFixedListCursor<T>> {
 	
 	val values: Array<T?> = TODO()
 	

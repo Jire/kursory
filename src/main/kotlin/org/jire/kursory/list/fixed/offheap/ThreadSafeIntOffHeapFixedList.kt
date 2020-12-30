@@ -3,11 +3,10 @@ package org.jire.kursory.list.fixed.offheap
 import net.openhft.chronicle.core.OS
 import org.jire.kursory.list.List
 import org.jire.kursory.list.fixed.FixedIntList
-import org.jire.kursory.list.fixed.FixedListIntCursor
 
 open class ThreadSafeIntOffHeapFixedList(capacity: Int) :
-	AbstractThreadSafeOffHeapFixedList<FixedListIntCursor>(capacity, Int.SIZE_BYTES.toLong()),
-	FixedIntList<FixedListIntCursor> {
+	AbstractThreadSafeOffHeapFixedList<ThreadSafeIntOffHeapFixedListCursor>(capacity, Int.SIZE_BYTES.toLong()),
+	FixedIntList<ThreadSafeIntOffHeapFixedListCursor> {
 	
 	@Suppress("LeakingThis")
 	override val cursor = ThreadSafeIntOffHeapFixedListCursor(this)
