@@ -5,7 +5,7 @@ import org.jire.kursory.IntCursor
 import org.jire.kursory.list.IntList
 import org.jire.kursory.list.List
 
-abstract class ThreadSafeIntOffHeapFixedList(
+open class ThreadSafeIntOffHeapFixedList(
 	capacity: Int,
 ) : AbstractThreadSafeOffHeapFixedList<IntCursor>(capacity, Int.SIZE_BYTES.toLong()), IntList {
 	
