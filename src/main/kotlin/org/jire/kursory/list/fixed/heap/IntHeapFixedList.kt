@@ -5,7 +5,7 @@ import org.jire.kursory.list.IntList
 import org.jire.kursory.list.List
 import java.util.*
 
-class FixedIntHeapList(capacity: Int) : AbstractFixedHeapList<IntCursor>(capacity), IntList {
+class IntHeapFixedList(capacity: Int) : AbstractHeapFixedList<IntCursor>(capacity), IntList {
 	
 	val values = IntArray(capacity)
 	
@@ -33,7 +33,7 @@ class FixedIntHeapList(capacity: Int) : AbstractFixedHeapList<IntCursor>(capacit
 		values[nextIndex++] = value
 	}
 	
-	override val cursor = FixedIntHeapListCursor(this)
+	override val cursor = IntHeapFixedListCursor(this)
 	
 	override fun clear() {
 		Arrays.fill(values, nil)

@@ -2,9 +2,9 @@ package org.jire.kursory.list.fixed.offheap
 
 import org.jire.kursory.ObjectCursor
 
-class FixedObjectOffHeapListCursor<T : Any>(
-	override val list: FixedObjectOffHeapList<T>
-) : AbstractFixedOffHeapListCursor(list),
+class ObjectOffHeapFixedListCursor<T : Any>(
+	override val list: ObjectOffHeapFixedList<T>
+) : AbstractOffHeapFixedListCursor(list),
 	ObjectCursor<T> {
 	
 	override val next get() = list[index]!!

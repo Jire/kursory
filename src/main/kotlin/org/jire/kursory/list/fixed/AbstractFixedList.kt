@@ -5,6 +5,5 @@ import org.jire.kursory.list.AbstractList
 
 abstract class AbstractFixedList<C : Cursor>(
 	override val capacity: Int,
-	preferThreadSafety: Boolean = false
-) : AbstractList<C>(preferThreadSafety),
+) : AbstractList<C>(),
 	FixedList<C>

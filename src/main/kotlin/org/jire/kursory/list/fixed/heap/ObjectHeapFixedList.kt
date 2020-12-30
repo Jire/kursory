@@ -1,18 +1,20 @@
-package org.jire.kursory.list.fixed.offheap
+package org.jire.kursory.list.fixed.heap
 
 import org.jire.kursory.ObjectCursor
+import org.jire.kursory.list.List
 import org.jire.kursory.list.ObjectList
 import java.util.*
 import kotlin.reflect.KClass
 
-class FixedObjectOffHeapList<T : Any>(
+class ObjectHeapFixedList<T : Any>(
 	capacity: Int,
-	val type: KClass<T>,
-	preferThreadSafety: Boolean = false,
-) : AbstractFixedOffHeapList<ObjectCursor<T>>(capacity, preferThreadSafety, -1L),
+	val type: KClass<T>
+) : AbstractHeapFixedList<ObjectCursor<T>>(capacity),
 	ObjectList<T> {
 	
 	val values: Array<T?> = TODO()
+	
+	var nextIndex = 0
 	
 	override fun get(index: Int) = values[index]
 	
@@ -22,7 +24,13 @@ class FixedObjectOffHeapList<T : Any>(
 	}
 	
 	override fun indexOf(value: T?): Int {
-		TODO("Not yet implemented")
+		value ?: return List.INVALID_INDEX
+		for (index in 0..values.lastIndex) {
+			if (value == values[index]) {
+				return index
+			}
+		}
+		return List.INVALID_INDEX
 	}
 	
 	override fun canAdd(value: T?) = nextIndex < lastIndex
@@ -31,7 +39,7 @@ class FixedObjectOffHeapList<T : Any>(
 		values[nextIndex++] = value
 	}
 	
-	override val cursor = FixedObjectOffHeapListCursor(this)
+	override val cursor = ObjectHeapFixedListCursor(this)
 	
 	override fun clear() {
 		Arrays.fill(values, null)

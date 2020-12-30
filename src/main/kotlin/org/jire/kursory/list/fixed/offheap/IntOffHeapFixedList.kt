@@ -5,12 +5,11 @@ import org.jire.kursory.IntCursor
 import org.jire.kursory.list.IntList
 import org.jire.kursory.list.List
 
-class FixedIntOffHeapList(
+class IntOffHeapFixedList(
 	capacity: Int,
-	preferThreadSafety: Boolean = false
-) : AbstractFixedOffHeapList<IntCursor>(capacity, preferThreadSafety, Int.SIZE_BYTES.toLong()), IntList {
+) : AbstractOffHeapFixedList<IntCursor>(capacity, Int.SIZE_BYTES.toLong()), IntList {
 	
-	override val cursor = FixedIntOffHeapListCursor(this)
+	override val cursor = IntOffHeapFixedListCursor(this)
 	
 	override fun get(index: Int) = OS.memory().readInt(pointer(index))
 	

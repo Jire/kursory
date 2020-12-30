@@ -4,11 +4,10 @@ import net.openhft.chronicle.core.OS
 import org.jire.kursory.Cursor
 import org.jire.kursory.list.fixed.AbstractFixedList
 
-abstract class AbstractFixedOffHeapList<C : Cursor>(
+abstract class AbstractOffHeapFixedList<C : Cursor>(
 	capacity: Int,
-	preferThreadSafety: Boolean = false,
 	val valueSize: Long
-) : AbstractFixedList<C>(capacity), FixedOffHeapList<C> {
+) : AbstractFixedList<C>(capacity), OffHeapFixedList<C> {
 	
 	fun pointer(index: Int) = address + (index * valueSize)
 	
@@ -16,8 +15,8 @@ abstract class AbstractFixedOffHeapList<C : Cursor>(
 	
 	val address = OS.memory().allocate(addressSpace)
 	
-	var nextIndex = 0
-	var highestIndex = 0
+	open var nextIndex = 0
+	open var highestIndex = 0
 	
 	override fun clear() = OS.memory().setMemory(address, addressSpace, 0)
 	

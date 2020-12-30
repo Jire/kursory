@@ -2,8 +2,6 @@ package org.jire.kursory
 
 interface Collection<C : Cursor> {
 	
-	val preferThreadSafety: Boolean get() = false
-	
 	val cursor: C
 	
 	val size: Int
