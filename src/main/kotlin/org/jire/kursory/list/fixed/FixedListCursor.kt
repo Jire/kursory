@@ -4,8 +4,8 @@ import org.jire.kursory.list.ListCursor
 
 interface FixedListCursor : ListCursor {
 	
-	val typedList: FixedList<*>
+	override val list: FixedList<*>
 	
-	override val lastIndex get() = typedList.lastIndex - 1
+	override val lastIndex get() = list.lastIndex - 1
 	
 }

@@ -1,6 +1,8 @@
 package org.jire.kursory.list.fixed.heap
 
-import org.jire.kursory.list.AbstractListCursor
-import org.jire.kursory.list.List
+import org.jire.kursory.list.fixed.AbstractFixedListCursor
 
-abstract class AbstractFixedHeapListCursor(list: List<*>) : AbstractListCursor(list), FixedHeapListCursor
+abstract class AbstractFixedHeapListCursor(
+	override val list: FixedHeapList<*>
+) : AbstractFixedListCursor(list),
+	FixedHeapListCursor
