@@ -5,10 +5,11 @@ import org.jire.kursory.IntCursor
 import org.jire.kursory.list.IntList
 import org.jire.kursory.list.List
 
-class ThreadSafeIntOffHeapFixedList(
+abstract class ThreadSafeIntOffHeapFixedList(
 	capacity: Int,
 ) : AbstractThreadSafeOffHeapFixedList<IntCursor>(capacity, Int.SIZE_BYTES.toLong()), IntList {
 	
+	@Suppress("LeakingThis")
 	override val cursor = ThreadSafeIntOffHeapFixedListCursor(this)
 	
 	override fun get(index: Int) = OS.memory().readVolatileInt(pointer(index))

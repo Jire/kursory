@@ -13,7 +13,7 @@ abstract class AbstractOffHeapFixedList<C : Cursor>(
 	
 	val addressSpace = capacity * valueSize
 	
-	val address = OS.memory().allocate(addressSpace)
+	open val address = OS.memory().allocate(addressSpace)
 	
 	open var nextIndex = 0
 	open var highestIndex = 0
@@ -28,9 +28,11 @@ abstract class AbstractOffHeapFixedList<C : Cursor>(
 		TODO("Not yet implemented")
 	}
 	
+	override fun initialize() = clear()
+	
 	init {
 		@Suppress("LeakingThis")
-		clear()
+		initialize()
 	}
 	
 }
