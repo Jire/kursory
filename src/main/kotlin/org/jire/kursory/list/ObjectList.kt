@@ -1,14 +1,11 @@
 package org.jire.kursory.list
 
 import org.jire.kursory.ObjectCollection
+import org.jire.kursory.ObjectCursor
 
-interface ObjectList<T> : ObjectCollection<T>, List {
+interface ObjectList<T> : ObjectCollection<T>, List<ObjectCursor<T>> {
 	
-	operator fun get(index: Int): T? {
-		if (index < 0) return null
-		if (index >= values.size) return null
-		return values[index]
-	}
+	operator fun get(index: Int): T?
 	
 	operator fun set(index: Int, value: T?): Boolean
 	

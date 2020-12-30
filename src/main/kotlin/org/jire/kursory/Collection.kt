@@ -1,6 +1,8 @@
 package org.jire.kursory
 
-interface Collection {
+interface Collection<C : Cursor> {
+	
+	val cursor: C
 	
 	val size: Int
 	

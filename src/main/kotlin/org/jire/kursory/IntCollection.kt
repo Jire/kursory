@@ -1,24 +1,29 @@
 package org.jire.kursory
 
-interface IntCollection : Collection {
+interface IntCollection : Collection<IntCursor> {
 	
-	companion object {
-		const val NIL = Int.MIN_VALUE
+	val nil get() = cursor.nil
+	
+	fun add(value: Int): Boolean {
+		if (canAdd(value)) {
+			addUnsafe(value)
+			return true
+		}
+		return false
 	}
 	
-	val values: IntArray
+	fun canAdd(value: Int): Boolean
 	
-	fun add(value: Int)
+	fun addUnsafe(value: Int)
 	
 	fun contains(value: Int): Boolean
 	
 	fun remove(value: Int): Boolean
 	
 	fun addAll(collection: IntCollection) {
-		for (value in collection.values) {
-			if (value != NIL) {
-				add(value)
-			}
+		val cursor = collection.cursor
+		while (cursor.moveNext()) {
+			add(cursor.next)
 		}
 	}
 	

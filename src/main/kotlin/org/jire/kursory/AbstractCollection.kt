@@ -1,5 +1,3 @@
 package org.jire.kursory
 
-abstract class AbstractCollection : Collection {
-
-}
+abstract class AbstractCollection<C : Cursor> : Collection<C>

@@ -1,15 +1,11 @@
 package org.jire.kursory.list
 
 import org.jire.kursory.IntCollection
-import org.jire.kursory.IntCollection.Companion.NIL
+import org.jire.kursory.IntCursor
 
-interface IntList : IntCollection, List {
+interface IntList : IntCollection, List<IntCursor> {
 	
-	operator fun get(index: Int): Int {
-		if (index < 0) return NIL
-		if (index >= values.size) return NIL
-		return values[index]
-	}
+	operator fun get(index: Int): Int
 	
 	operator fun set(index: Int, value: Int): Boolean
 	
@@ -17,7 +13,7 @@ interface IntList : IntCollection, List {
 	
 	override fun contains(value: Int) = indexOf(value) >= 0
 	
-	override fun removeAt(index: Int) = set(index, NIL)
+	override fun removeAt(index: Int) = set(index, nil)
 	
 	override fun remove(value: Int): Boolean {
 		val index = indexOf(value)
