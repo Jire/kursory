@@ -1,5 +1,6 @@
 package org.jire.kursory.list.fixed.offheap
 
+import net.openhft.chronicle.core.CleaningRandomAccessFile
 import net.openhft.chronicle.core.OS
 import java.io.File
 import java.io.RandomAccessFile
@@ -11,7 +12,7 @@ class PersistedIntOffHeapFixedList(
 ) : ThreadSafeIntOffHeapFixedList(capacity) {
 	constructor(capacity: Int, persistTo: String) : this(capacity, File(persistTo))
 	
-	val raf = RandomAccessFile(persistTo, "rw")
+	val raf: RandomAccessFile = CleaningRandomAccessFile(persistTo, "rw")
 	
 	override val address = OS.map(
 		raf.channel,
