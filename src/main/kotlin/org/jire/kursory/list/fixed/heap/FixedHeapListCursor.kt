@@ -1,11 +1,5 @@
 package org.jire.kursory.list.fixed.heap
 
-import org.jire.kursory.list.ListCursor
+import org.jire.kursory.list.fixed.FixedListCursor
 
-interface FixedHeapListCursor : ListCursor {
-	
-	val typedList: FixedHeapList<*>
-	
-	override val lastIndex get() = typedList.lastIndex - 1
-	
-}
+interface FixedHeapListCursor : FixedListCursor
