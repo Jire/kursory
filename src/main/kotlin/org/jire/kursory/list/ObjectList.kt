@@ -22,7 +22,7 @@ interface ObjectList<T, C : ListObjectCursor<T>> : ObjectCollection<T, C>, List<
 	fun addAll(collection: ObjectList<out T, out C>) {
 		val cursor = collection.cursor
 		while (cursor.moveNext()) {
-			addUnsafe(cursor.next)
+			addNoCheck(cursor.next)
 		}
 	}
 	

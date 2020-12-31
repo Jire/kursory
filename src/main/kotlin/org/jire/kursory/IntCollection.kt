@@ -6,7 +6,7 @@ interface IntCollection<C : IntCursor> : Collection<C> {
 	
 	fun add(value: Int): Boolean {
 		if (canAdd(value)) {
-			addUnsafe(value)
+			addNoCheck(value)
 			return true
 		}
 		return false
@@ -14,7 +14,7 @@ interface IntCollection<C : IntCursor> : Collection<C> {
 	
 	fun canAdd(value: Int): Boolean
 	
-	fun addUnsafe(value: Int)
+	fun addNoCheck(value: Int)
 	
 	fun contains(value: Int): Boolean
 	

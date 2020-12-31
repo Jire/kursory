@@ -4,7 +4,7 @@ interface ObjectCollection<T, C : ObjectCursor<T>> : Collection<C> {
 	
 	fun add(value: T): Boolean {
 		if (canAdd(value)) {
-			addUnsafe(value)
+			addNoCheck(value)
 			return true
 		}
 		return false
@@ -12,7 +12,7 @@ interface ObjectCollection<T, C : ObjectCursor<T>> : Collection<C> {
 	
 	fun canAdd(value: T?): Boolean
 	
-	fun addUnsafe(value: T?)
+	fun addNoCheck(value: T?)
 	
 	fun contains(value: T?): Boolean
 	

@@ -1,7 +1,7 @@
 package org.jire.kursory.list.fixed.offheap
 
-import net.openhft.chronicle.core.OS
 import org.jire.kursory.list.fixed.AbstractFixedList
+import org.jire.kursory.util.Memory
 
 abstract class AbstractOffHeapFixedList<C : OffHeapFixedListCursor>(
 	capacity: Int,
@@ -12,12 +12,15 @@ abstract class AbstractOffHeapFixedList<C : OffHeapFixedListCursor>(
 	
 	val addressSpace = capacity * valueSize
 	
-	open val address = OS.memory().allocate(addressSpace)
+	open val address = Memory.allocate(addressSpace)
 	
-	open var nextIndex = 0
-	open var highestIndex = 0
+	@Volatile
+	open var nextIndex: Int = 0
 	
-	override fun clear() = OS.memory().setMemory(address, addressSpace, 0)
+	@Volatile
+	open var highestIndex: Int = 0
+	
+	override fun clear() = Memory.set(address, addressSpace, 0)
 	
 	override fun initialize() = clear()
 	

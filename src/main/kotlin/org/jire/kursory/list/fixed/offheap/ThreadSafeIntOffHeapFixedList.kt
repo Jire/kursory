@@ -1,9 +1,9 @@
 package org.jire.kursory.list.fixed.offheap
 
-import net.openhft.chronicle.core.OS
 import org.jire.kursory.list.List
 import org.jire.kursory.list.fixed.FixedIntList
 import org.jire.kursory.util.IntCASDelegate
+import org.jire.kursory.util.Memory
 
 open class ThreadSafeIntOffHeapFixedList(capacity: Int) :
 	AbstractThreadSafeOffHeapFixedList<ThreadSafeIntOffHeapFixedListCursor>(capacity, Int.SIZE_BYTES.toLong()),
@@ -15,11 +15,11 @@ open class ThreadSafeIntOffHeapFixedList(capacity: Int) :
 	@Suppress("LeakingThis")
 	override val cursor = ThreadSafeIntOffHeapFixedListCursor(this)
 	
-	override fun get(index: Int) = OS.memory().readVolatileInt(pointer(index))
+	override fun get(index: Int) = Memory.getIntVolatile(pointer(index))
 	
 	override fun set(index: Int, value: Int): Boolean {
 		if (index > highestIndex) highestIndex = index
-		OS.memory().writeVolatileInt(pointer(index), value)
+		Memory.putIntVolatile(pointer(index), value)
 		return true
 	}
 	
@@ -34,7 +34,7 @@ open class ThreadSafeIntOffHeapFixedList(capacity: Int) :
 	
 	override fun canAdd(value: Int) = nextIndex < lastIndex
 	
-	override fun addUnsafe(value: Int) {
+	override fun addNoCheck(value: Int) {
 		set(nextIndex++, value)
 	}
 	

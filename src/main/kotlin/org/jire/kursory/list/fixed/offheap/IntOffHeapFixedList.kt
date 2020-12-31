@@ -1,8 +1,8 @@
 package org.jire.kursory.list.fixed.offheap
 
-import net.openhft.chronicle.core.OS
 import org.jire.kursory.list.List
 import org.jire.kursory.list.fixed.FixedIntList
+import org.jire.kursory.util.Memory
 
 class IntOffHeapFixedList(
 	capacity: Int,
@@ -11,11 +11,11 @@ class IntOffHeapFixedList(
 	
 	override val cursor = IntOffHeapFixedListCursor(this)
 	
-	override fun get(index: Int) = OS.memory().readInt(pointer(index))
+	override fun get(index: Int) = Memory.getInt(pointer(index))
 	
 	override fun set(index: Int, value: Int): Boolean {
 		if (index > highestIndex) highestIndex = index
-		OS.memory().writeInt(pointer(index), value)
+		Memory.putInt(pointer(index), value)
 		return true
 	}
 	
@@ -30,7 +30,7 @@ class IntOffHeapFixedList(
 	
 	override fun canAdd(value: Int) = nextIndex < lastIndex
 	
-	override fun addUnsafe(value: Int) {
+	override fun addNoCheck(value: Int) {
 		set(nextIndex++, value)
 	}
 	

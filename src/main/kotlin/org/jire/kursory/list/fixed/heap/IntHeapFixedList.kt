@@ -29,7 +29,7 @@ class IntHeapFixedList(capacity: Int) : AbstractHeapFixedList<IntHeapFixedListCu
 	
 	override fun canAdd(value: Int) = nextIndex < lastIndex
 	
-	override fun addUnsafe(value: Int) {
+	override fun addNoCheck(value: Int) {
 		values[nextIndex++] = value
 	}
 	

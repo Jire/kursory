@@ -34,7 +34,7 @@ class ObjectHeapFixedList<T : Any>(
 	
 	override fun canAdd(value: T?) = nextIndex < lastIndex
 	
-	override fun addUnsafe(value: T?) {
+	override fun addNoCheck(value: T?) {
 		values[nextIndex++] = value
 	}
 	
