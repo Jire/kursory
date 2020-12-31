@@ -1,6 +1,6 @@
 package org.jire.kursory.util
 
-import org.jire.kursory.util.Classes.getFieldOffset
+import org.jire.kursory.util.Fields.getFieldOffset
 import kotlin.reflect.KProperty
 
 class IntCASDelegate<T : Any>(@Volatile private var value: Int = 0) : CASDelegate {
