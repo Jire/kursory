@@ -7,6 +7,11 @@ plugins {
 group = "org.jire"
 version = "0.1.0"
 
+java {
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility = JavaVersion.VERSION_1_8
+}
+
 repositories {
 	jcenter()
 }
@@ -15,6 +20,6 @@ dependencies {
 	implementation("net.openhft:chronicle-core:2.20.126")
 }
 
-tasks.withType<KotlinCompile>() {
+tasks.withType<KotlinCompile> {
 	kotlinOptions.jvmTarget = "1.8"
 }
