@@ -2,6 +2,9 @@
 
 _high-performance collections for the JVM_
 
+[![Build Status](https://travis-ci.com/Jire/kursory.svg?branch=master)](https://travis-ci.com/Jire/kursory)
+[![license](https://img.shields.io/github/license/Jire/kursory.svg)](https://github.com/Jire/kursory/blob/master/LICENSE.txt)
+
 **WARNING:** This project is still under initial development and is not ready to be used.
 
 ## Goals
