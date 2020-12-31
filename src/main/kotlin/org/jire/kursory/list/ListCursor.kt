@@ -9,7 +9,7 @@ interface ListCursor : Cursor {
 	var index: Int
 	val lastIndex: Int
 	
-	override fun hasNext() = index < lastIndex
+	override fun hasNext() = index <= lastIndex
 	
 	override fun moveNext(): Boolean {
 		if (hasNext()) {
