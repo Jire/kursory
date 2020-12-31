@@ -17,14 +17,12 @@ class ObjectOffHeapFixedList<T : Any>(
 	}
 	
 	override fun set(index: Int, value: T?): Boolean {
-		value!!
-		
-		if (Jvm.isJava9Plus()) {
-			Memory.copy(value, pointer(index), valueSize)
-		} else {
-			Memory.copy(value, 0, null, pointer(index), valueSize)
+		val pointer = pointer(index)
+		when {
+			value == null -> Memory.set(pointer, valueSize, 0)
+			Jvm.isJava9Plus() -> Memory.copy(value, pointer, valueSize)
+			else -> Memory.copy(value, 0, null, pointer, valueSize)
 		}
-		
 		return true
 	}
 	
