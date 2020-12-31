@@ -27,7 +27,7 @@ class IntHeapFixedList(capacity: Int) : AbstractHeapFixedList<IntHeapFixedListCu
 		return List.INVALID_INDEX
 	}
 	
-	override fun canAdd(value: Int) = nextIndex < lastIndex
+	override fun canAdd(value: Int) = nextIndex <= lastIndex
 	
 	override fun addNoCheck(value: Int) {
 		values[nextIndex++] = value

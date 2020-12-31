@@ -32,7 +32,7 @@ class ObjectHeapFixedList<T : Any>(
 		return List.INVALID_INDEX
 	}
 	
-	override fun canAdd(value: T?) = nextIndex < lastIndex
+	override fun canAdd(value: T?) = nextIndex <= lastIndex
 	
 	override fun addNoCheck(value: T?) {
 		values[nextIndex++] = value

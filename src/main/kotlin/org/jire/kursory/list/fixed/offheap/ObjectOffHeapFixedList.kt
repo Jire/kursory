@@ -30,7 +30,7 @@ class ObjectOffHeapFixedList<T : Any>(
 		TODO("Not yet implemented")
 	}
 	
-	override fun canAdd(value: T?) = nextIndex < lastIndex
+	override fun canAdd(value: T?) = nextIndex <= lastIndex
 	
 	override fun addNoCheck(value: T?) {
 		set(nextIndex++, value)
