@@ -24,6 +24,8 @@ abstract class AbstractOffHeapFixedList<C : OffHeapFixedListCursor>(
 	
 	override fun initialize() = clear()
 	
+	override fun free() = Memory.free(address)
+	
 	init {
 		@Suppress("LeakingThis")
 		initialize()
